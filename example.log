@@ -1,0 +1,191 @@
+(.venv) beastserver:~/pyprojects/File_Protocol_Testing$ sudo python3 nfs3_tests_v2.py 
+2026-02-18 22:34:47 ✓ 
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ NFS3 PROTOCOL TEST SUITE
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ 
+2026-02-18 22:34:47 ✓ 
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ NFS3 TEST SUITE - /ifs/ACCESS_ZONES/system/nfs3_01_rw (RW)
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ 
+2026-02-18 22:34:47 ✓ Mounting: sudo mount -t nfs -o vers=3,proto=tcp,rsize=1048576,wsize=1048576,timeo=600,retrans=2,hard,intr,acregmin=3,acregmax=60,acdirmin=30,acdirmax=60,rw onefs002-2.beastmode.local.net:/ifs/ACCESS_ZONES/system/nfs3_01_rw /tmp/nfs3_test_h7xkerus
+2026-02-18 22:34:47 ✓ ✓ Mounted at /tmp/nfs3_test_h7xkerus (rw)
+2026-02-18 22:34:47 ✓ Test directory: /tmp/nfs3_test_h7xkerus/test_1771472087_1022030
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ TEST: Mount Options Verification
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ Phase 1: Reading /proc/mounts
+2026-02-18 22:34:47 ✓ Phase 2: Searching for mount point: /tmp/nfs3_test_h7xkerus
+2026-02-18 22:34:47 ✓ ✓ Found: onefs002-2.beastmode.local.net:/ifs/ACCESS_ZONES/system/nfs3_01_rw /tmp/nfs3_test_h7xkerus nfs rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,fatal_neterrors=none,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=192.168.0.126,mountvers=3,mountport=300,mountproto=tcp,local_lock=none,addr=192.168.0.126 0 0
+2026-02-18 22:34:47 ✓ Phase 3: Parsing options: rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,fatal_neterrors=none,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=192.168.0.126,mountvers=3,mountport=300,mountproto=tcp,local_lock=none,addr=192.168.0.126
+2026-02-18 22:34:47 ✓   ✓ NFS Version: 3
+2026-02-18 22:34:47 ✓   ✓ Transport: tcp
+2026-02-18 22:34:47 ✓ ✓ Mount options verified
+2026-02-18 22:34:47 ✓ ✓ PASS mount_options_verification: 
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ TEST: Transport Protocol Verification
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ ✓ Confirmed: Using TCP
+2026-02-18 22:34:47 ✓ ✓ PASS transport_protocol: Using TCP as expected
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ TEST: Read-Write Mount Enforcement
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ Phase 1: Testing write permissions
+2026-02-18 22:34:47 ✓ ✓ Write operation successful
+2026-02-18 22:34:47 ✓ Phase 2: Verifying data integrity
+2026-02-18 22:34:47 ✓ ✓ Data verified correctly
+2026-02-18 22:34:47 ✓ Phase 3: Cleanup
+2026-02-18 22:34:47 ✓ ✓ Test file removed
+2026-02-18 22:34:47 ✓ ✓ RW mount working correctly
+2026-02-18 22:34:47 ✓ ✓ PASS readwrite_mount_enforcement: 
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ TEST: Basic File Operations
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ ✓ File created with 10 bytes
+2026-02-18 22:34:47 ✓ ✓ File read: 'Hello NFS3'
+2026-02-18 22:34:47 ✓ ✓ File deleted
+2026-02-18 22:34:47 ✓ ✓ PASS basic_file_operations: 
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ TEST: Idempotent Operations (NFS3 Stateless Protocol)
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ Phase 1: Testing idempotent CREATE/WRITE operations
+2026-02-18 22:34:47 ✓   Iteration 1: Writing 'Iteration 0'
+2026-02-18 22:34:47 ✓   Iteration 2: Writing 'Iteration 1'
+2026-02-18 22:34:47 ✓   Iteration 3: Writing 'Iteration 2'
+2026-02-18 22:34:47 ✓ Phase 2: Verifying final content
+2026-02-18 22:34:47 ✓   File content: 'Iteration 2'
+2026-02-18 22:34:47 ✓   ✓ Last write persisted correctly
+2026-02-18 22:34:47 ✓ Phase 3: Testing idempotent DELETE operation
+2026-02-18 22:34:47 ✓   ✓ First delete successful
+2026-02-18 22:34:47 ✓   ✓ Second delete correctly raised FileNotFoundError
+2026-02-18 22:34:47 ✓ ✓ Idempotency test passed
+2026-02-18 22:34:47 ✓ ✓ PASS idempotent_operations: 
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ TEST: Close-to-Open Consistency
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ Phase 1: Process 1 - Write and close file
+2026-02-18 22:34:47 ✓ ✓ File written and closed (should flush to server)
+2026-02-18 22:34:47 ✓ Phase 2: Allowing 0.5 s for server flush
+2026-02-18 22:34:47 ✓ ✓ Flush period elapsed
+2026-02-18 22:34:47 ✓ Phase 3: Process 2 - Open and read file
+2026-02-18 22:34:47 ✓   Read content: 'Process 1 data'
+2026-02-18 22:34:47 ✓ ✓ Process 2 sees Process 1's write (close-to-open works)
+2026-02-18 22:34:47 ✓ ✓ Close-to-open consistency verified
+2026-02-18 22:34:47 ✓ ✓ PASS close_to_open_consistency: 
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ TEST: NLM Basic File Locking
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ Phase 1: Creating test file
+2026-02-18 22:34:47 ✓ ✓ Test file created
+2026-02-18 22:34:47 ✓ Phase 2: Acquiring exclusive lock (LOCK_EX)
+2026-02-18 22:34:47 ✓ ✓ Exclusive lock acquired by main process
+2026-02-18 22:34:47 ✓ Phase 3: Spawning child process to test lock blocking
+2026-02-18 22:34:47 ✓ Phase 4: Releasing exclusive lock
+2026-02-18 22:34:47 ✓ ✓ Lock released successfully
+2026-02-18 22:34:47 ✓ ✓ NLM basic locking test passed
+2026-02-18 22:34:47 ✓ ✓ PASS nlm_basic_locking: 
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ TEST: Small File Performance
+2026-02-18 22:34:47 ✓ ======================================================================
+2026-02-18 22:34:47 ✓ Phase 1: Creating 100 small files
+2026-02-18 22:34:48 ✓   Progress: 25/100 (107 files/s)
+2026-02-18 22:34:48 ✓   Progress: 50/100 (117 files/s)
+2026-02-18 22:34:48 ✓   Progress: 75/100 (118 files/s)
+2026-02-18 22:34:48 ✓   Progress: 100/100 (121 files/s)
+2026-02-18 22:34:48 ✓ ✓ Created 100 files in 0.82 s (121 ops/s)
+2026-02-18 22:34:48 ✓ Phase 2: Reading 100 files
+2026-02-18 22:34:48 ✓ ✓ Read 100 files in 0.08 s (1331 ops/s)
+2026-02-18 22:34:48 ✓ Phase 3: Deleting 100 files
+2026-02-18 22:34:49 ✓ ✓ Deleted 100 files in 0.53 s (187 ops/s)
+2026-02-18 22:34:49 ✓ ✓ Small file performance test completed
+2026-02-18 22:34:49 ✓ ✓ PASS small_file_performance: 100 files - Create: 121 ops/s, Read: 1331 ops/s, Delete: 187 ops/s
+2026-02-18 22:34:49 ✓ ======================================================================
+2026-02-18 22:34:49 ✓ TEST: Concurrent Writers
+2026-02-18 22:34:49 ✓ ======================================================================
+2026-02-18 22:34:49 ✓ Testing 32 concurrent writer threads
+2026-02-18 22:34:49 ✓ Phase 1: Launching 32 writer threads
+2026-02-18 22:34:49 ✓ Phase 2: All threads completed in 0.21 s
+2026-02-18 22:34:49 ✓   Success: 32/32
+2026-02-18 22:34:49 ✓ ✓ All 32 concurrent writers succeeded
+2026-02-18 22:34:49 ✓ ✓ PASS concurrent_writers: 32/32 writers succeeded in 0.21 s
+2026-02-18 22:34:49 ✓ ======================================================================
+2026-02-18 22:34:49 ✓ TEST: Large File Sequential I/O
+2026-02-18 22:34:49 ✓ ======================================================================
+2026-02-18 22:34:49 ✓ Testing sequential read/write with 128MB file
+2026-02-18 22:34:49 ✓ Phase 1: Sequential WRITE (128MB)
+2026-02-18 22:34:49 ✓   Progress: 25/128MB (438.9 MB/s)
+2026-02-18 22:34:49 ✓   Progress: 50/128MB (460.3 MB/s)
+2026-02-18 22:34:49 ✓   Progress: 75/128MB (468.7 MB/s)
+2026-02-18 22:34:49 ✓   Progress: 100/128MB (473.4 MB/s)
+2026-02-18 22:34:49 ✓   Progress: 125/128MB (475.6 MB/s)
+2026-02-18 22:34:57 ✓ ✓ Write completed: 128MB in 7.43 s (17.23 MB/s)
+2026-02-18 22:34:57 ✓ Phase 2: Sequential READ (128MB)
+2026-02-18 22:35:01 ✓ ✓ Read completed: 128MB in 4.15 s (30.86 MB/s)
+2026-02-18 22:35:01 ✓ Phase 3: Cleaning up
+2026-02-18 22:35:01 ✓ ✓ Test file removed
+2026-02-18 22:35:01 ✓ ✓ Large file I/O test completed
+2026-02-18 22:35:01 ✓ ✓ PASS large_sequential_io: 128MB - Write: 17.23 MB/s, Read: 30.86 MB/s
+2026-02-18 22:35:01 ✓ ✓ Test directory cleaned up
+2026-02-18 22:35:02 ✓ 
+2026-02-18 22:35:02 ✓ ======================================================================
+2026-02-18 22:35:02 ✓ TEST SUMMARY
+2026-02-18 22:35:02 ✓ ======================================================================
+2026-02-18 22:35:02 ✓ Total Tests: 10
+2026-02-18 22:35:02 ✓ Passed: 10 (100.0%)
+2026-02-18 22:35:02 ✓ Failed: 0 (0.0%)
+2026-02-18 22:35:02 ✓ 
+2026-02-18 22:35:02 ✓ ======================================================================
+2026-02-18 22:35:02 ✓ NFS3 TEST SUITE - /ifs/ACCESS_ZONES/system/nfs3_01_ro (RO)
+2026-02-18 22:35:02 ✓ ======================================================================
+2026-02-18 22:35:02 ✓ 
+2026-02-18 22:35:02 ✓ Mounting: sudo mount -t nfs -o vers=3,proto=tcp,rsize=1048576,wsize=1048576,timeo=600,retrans=2,hard,intr,acregmin=3,acregmax=60,acdirmin=30,acdirmax=60,ro onefs002-1.beastmode.local.net:/ifs/ACCESS_ZONES/system/nfs3_01_ro /tmp/nfs3_test_j6ez3r_e
+2026-02-18 22:35:02 ✓ ✓ Mounted at /tmp/nfs3_test_j6ez3r_e (ro)
+2026-02-18 22:35:02 ✓ Test directory (RO): /tmp/nfs3_test_j6ez3r_e
+2026-02-18 22:35:02 ✓ ⚠ Read-only mount - using mount point directly
+2026-02-18 22:35:02 ✓ ======================================================================
+2026-02-18 22:35:02 ✓ TEST: Mount Options Verification
+2026-02-18 22:35:02 ✓ ======================================================================
+2026-02-18 22:35:02 ✓ Phase 1: Reading /proc/mounts
+2026-02-18 22:35:02 ✓ Phase 2: Searching for mount point: /tmp/nfs3_test_j6ez3r_e
+2026-02-18 22:35:02 ✓ ✓ Found: onefs002-1.beastmode.local.net:/ifs/ACCESS_ZONES/system/nfs3_01_ro /tmp/nfs3_test_j6ez3r_e nfs ro,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,fatal_neterrors=none,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=192.168.0.125,mountvers=3,mountport=300,mountproto=tcp,local_lock=none,addr=192.168.0.125 0 0
+2026-02-18 22:35:02 ✓ Phase 3: Parsing options: ro,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,fatal_neterrors=none,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=192.168.0.125,mountvers=3,mountport=300,mountproto=tcp,local_lock=none,addr=192.168.0.125
+2026-02-18 22:35:02 ✓   ✓ NFS Version: 3
+2026-02-18 22:35:02 ✓   ✓ Transport: tcp
+2026-02-18 22:35:02 ✓ ✓ Mount options verified
+2026-02-18 22:35:02 ✓ ✓ PASS mount_options_verification: 
+2026-02-18 22:35:02 ✓ ======================================================================
+2026-02-18 22:35:02 ✓ TEST: Transport Protocol Verification
+2026-02-18 22:35:02 ✓ ======================================================================
+2026-02-18 22:35:02 ✓ ✓ Confirmed: Using TCP
+2026-02-18 22:35:02 ✓ ✓ PASS transport_protocol: Using TCP as expected
+2026-02-18 22:35:02 ✓ ======================================================================
+2026-02-18 22:35:02 ✓ TEST: Read-Only Mount Enforcement
+2026-02-18 22:35:02 ✓ ======================================================================
+2026-02-18 22:35:02 ✓ Phase 1: Attempting write on RO mount
+2026-02-18 22:35:02 ✓ ✓ Write correctly blocked (errno: 30)
+2026-02-18 22:35:02 ✓ ✓ PASS readonly_mount_enforcement: Write blocked as expected (errno 30)
+2026-02-18 22:35:02 ✓ ======================================================================
+2026-02-18 22:35:02 ✓ TEST: Read-Only Mount Read Operations
+2026-02-18 22:35:02 ✓ ======================================================================
+2026-02-18 22:35:02 ✓ Phase 1: Listing directory contents
+2026-02-18 22:35:02 ✓ ✓ Directory listed successfully (0 items found)
+2026-02-18 22:35:02 ✓ Phase 2: Getting directory stats
+2026-02-18 22:35:02 ✓ ✓ Directory stat successful
+2026-02-18 22:35:02 ✓   Mode: 0o40700
+2026-02-18 22:35:02 ✓   Owner: 0
+2026-02-18 22:35:02 ✓ ✓ Read operations working on RO mount
+2026-02-18 22:35:02 ✓ ✓ PASS readonly_mount_read_operations: Read operations successful (0 items)
+2026-02-18 22:35:03 ✓ 
+2026-02-18 22:35:03 ✓ ======================================================================
+2026-02-18 22:35:03 ✓ TEST SUMMARY
+2026-02-18 22:35:03 ✓ ======================================================================
+2026-02-18 22:35:03 ✓ Total Tests: 4
+2026-02-18 22:35:03 ✓ Passed: 4 (100.0%)
+2026-02-18 22:35:03 ✓ Failed: 0 (0.0%)
+2026-02-18 22:35:03 ✓ ✓ Text documentation log saved: test_reports/report.txt
+2026-02-18 22:35:03 ✓ 
+2026-02-18 22:35:03 ✓ ✓ All tests completed in 0m 16 s
+2026-02-18 22:35:03 ✓ ✓ Documentation log: test_reports/report.txt
+2026-02-18 22:35:03 ✓ 
+
