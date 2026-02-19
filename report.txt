@@ -1,0 +1,232 @@
+================================================================================
+NFS3 PROTOCOL TEST DOCUMENTATION
+================================================================================
+
+TEST RUN INFORMATION
+--------------------------------------------------------------------------------
+Test Suite               : NFS3 Protocol Validation
+Date                     : 2026-02-18 22:34:47
+Operating System         : Linux 6.17.0-14-generic
+Python Version           : 3.12.3
+Vendor                   : Dell
+Software                 : PowerScale OneFS 9.10.0.0
+Server (rw)              : onefs002-2.beastmode.local.net
+Export Path (rw)         : /ifs/ACCESS_ZONES/system/nfs3_01_rw
+Server (ro)              : onefs002-1.beastmode.local.net
+Export Path (ro)         : /ifs/ACCESS_ZONES/system/nfs3_01_ro
+Total Duration           : 0m 16s
+
+================================================================================
+TEST RESULTS AND DOCUMENTATION
+================================================================================
+
+--------------------------------------------------------------------------------
+TEST: test_mount_options_verification
+--------------------------------------------------------------------------------
+Purpose: Confirm that the actual mount options match the requested configuration
+Started: 2026-02-18 22:34:47
+
+  • Phase 1: Reading /proc/mounts
+  • Phase 2: Searching for mount point: /tmp/nfs3_test_h7xkerus
+  • Phase 3: Parsing options: rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,fatal_neterrors=none,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=192.168.0.126,mountvers=3,mountport=300,mountproto=tcp,local_lock=none,addr=192.168.0.126
+
+Result: PASSED ✓
+Completed: 2026-02-18 22:34:47
+
+
+--------------------------------------------------------------------------------
+TEST: transport_protocol
+--------------------------------------------------------------------------------
+Purpose: Verify that the mount is using the correct transport protocol (TCP/UDP) as requested
+Started: 2026-02-18 22:34:47
+
+  • Checking /proc/mounts for TCP protocol
+  • Found mount entry in /proc/mounts
+  • Verified TCP protocol in use
+
+Result: PASSED ✓
+Details: Using TCP as expected
+Completed: 2026-02-18 22:34:47
+
+
+Result: PASSED ✓
+Completed: 2026-02-18 22:34:47
+
+
+--------------------------------------------------------------------------------
+TEST: basic_file_operations
+--------------------------------------------------------------------------------
+Purpose: Test fundamental file operations: create, read, write, and delete files
+Started: 2026-02-18 22:34:47
+
+  • Creating test file and writing data
+  • Reading file content back
+  • Data integrity verified
+  • Deleting test file
+
+Result: PASSED ✓
+Completed: 2026-02-18 22:34:47
+
+
+--------------------------------------------------------------------------------
+TEST: idempotent_operations
+--------------------------------------------------------------------------------
+Purpose: Verify NFS3 stateless protocol ensures repeated operations produce consistent results
+Started: 2026-02-18 22:34:47
+
+  • Checking /proc/mounts for TCP protocol
+  • Phase 1: Testing idempotent CREATE/WRITE operations
+  • Phase 2: Verifying final content
+  • Phase 3: Testing idempotent DELETE operation
+
+Result: PASSED ✓
+Completed: 2026-02-18 22:34:47
+
+
+--------------------------------------------------------------------------------
+TEST: close_to_open_consistency
+--------------------------------------------------------------------------------
+Purpose: Test NFS3 close-to-open cache consistency - changes made by one client are visible to others after file close
+Started: 2026-02-18 22:34:47
+
+  • Testing close-to-open consistency between two processes
+  • Phase 1: Process 1 - Write and close file
+  • Phase 2: Allowing 0.5s for server flush
+  • Phase 3: Process 2 - Open and read file
+
+Result: PASSED ✓
+Completed: 2026-02-18 22:34:47
+
+
+--------------------------------------------------------------------------------
+TEST: nlm_basic_locking
+--------------------------------------------------------------------------------
+Purpose: Test Network Lock Manager (NLM) exclusive file locking between processes
+Started: 2026-02-18 22:34:47
+
+  • Testing close-to-open consistency between two processes
+  • Phase 1: Creating test file
+  • Phase 2: Acquiring exclusive lock (LOCK_EX)
+  • Phase 3: Spawning child process to test lock blocking
+  • Phase 4: Releasing exclusive lock
+
+Result: PASSED ✓
+Completed: 2026-02-18 22:34:47
+
+
+--------------------------------------------------------------------------------
+TEST: small_file_performance
+--------------------------------------------------------------------------------
+Purpose: Measure metadata-intensive operations with many small files
+Started: 2026-02-18 22:34:47
+
+  • Testing small file performance
+  • Phase 1: Creating 100 small files
+  • Phase 2: Reading 100 files
+  • Phase 3: Deleting 100 files
+
+Result: PASSED ✓
+Details: 100 files - Create: 121 ops/s, Read: 1331 ops/s, Delete: 187 ops/s
+Completed: 2026-02-18 22:34:49
+
+
+--------------------------------------------------------------------------------
+TEST: concurrent_writers
+--------------------------------------------------------------------------------
+Purpose: Test multiple simultaneous writers to verify concurrent access handling
+Started: 2026-02-18 22:34:49
+
+  • Testing 32 concurrent writer threads
+  • Phase 1: Launching 32 writer threads
+  • Phase 2: All threads completed in 0.21s
+
+Result: PASSED ✓
+Details: 32/32 writers succeeded in 0.21s
+Completed: 2026-02-18 22:34:49
+
+
+--------------------------------------------------------------------------------
+TEST: large_sequential_io
+--------------------------------------------------------------------------------
+Purpose: Measure large file sequential read/write performance
+Started: 2026-02-18 22:34:49
+
+  • Testing sequential read/write with 128MB file
+  • Phase 1: Sequential WRITE (128MB)
+  • Phase 2: Sequential READ (128MB)
+  • Phase 3: Cleaning up
+
+Result: PASSED ✓
+Details: 128MB - Write: 17.23 MB/s, Read: 30.86 MB/s
+Completed: 2026-02-18 22:35:01
+
+
+--------------------------------------------------------------------------------
+TEST: test_mount_options_verification
+--------------------------------------------------------------------------------
+Purpose: Confirm that the actual mount options match the requested configuration
+Started: 2026-02-18 22:35:02
+
+  • Phase 1: Reading /proc/mounts
+  • Phase 2: Searching for mount point: /tmp/nfs3_test_j6ez3r_e
+  • Phase 3: Parsing options: ro,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,fatal_neterrors=none,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=192.168.0.125,mountvers=3,mountport=300,mountproto=tcp,local_lock=none,addr=192.168.0.125
+
+Result: PASSED ✓
+Completed: 2026-02-18 22:35:02
+
+
+--------------------------------------------------------------------------------
+TEST: transport_protocol
+--------------------------------------------------------------------------------
+Purpose: Verify that the mount is using the correct transport protocol (TCP/UDP) as requested
+Started: 2026-02-18 22:35:02
+
+  • Checking /proc/mounts for TCP protocol
+  • Found mount entry in /proc/mounts
+  • Verified TCP protocol in use
+
+Result: PASSED ✓
+Details: Using TCP as expected
+Completed: 2026-02-18 22:35:02
+
+
+--------------------------------------------------------------------------------
+TEST: readonly_mount_enforcement
+--------------------------------------------------------------------------------
+Purpose: Verify read-only mount blocks write operations
+Started: 2026-02-18 22:35:02
+
+  • Testing read-only mount enforcement
+  • Phase 1: Attempting write on RO mount
+
+Result: PASSED ✓
+Details: Write blocked as expected (errno 30)
+Completed: 2026-02-18 22:35:02
+
+
+--------------------------------------------------------------------------------
+TEST: readonly_mount_read_operations
+--------------------------------------------------------------------------------
+Purpose: Verify read operations still work on read-only mounts
+Started: 2026-02-18 22:35:02
+
+  • Testing read-only mount read operations
+  • Phase 1: Listing directory contents
+  • Phase 2: Getting directory stats
+
+Result: PASSED ✓
+Details: Read operations successful (0 items)
+Completed: 2026-02-18 22:35:02
+
+================================================================================
+TEST SUMMARY
+================================================================================
+Total Tests: 14
+Passed: 14
+Failed: 0
+Success Rate: 100.0%
+
+
+================================================================================
+Report generated: 2026-02-18 22:35:03
+================================================================================
